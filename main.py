@@ -3,7 +3,6 @@ import time
 import smtplib
 import os
 
-
 def get_driver():
   options = webdriver.ChromeOptions()
   options.add_argument("disable-infobars")
@@ -16,7 +15,6 @@ def get_driver():
   driver = webdriver.Chrome(options=options)
   driver.get("https://zse.hr/en/indeks-366/365?isin=HRZB00ICBEX6")
   return driver
-
 
 def splitting_elem(text):
   """Extracting numeric frm the text"""
@@ -41,7 +39,6 @@ def send_mail(num):
     f"Subject: Percentage change of the stock goes below -0.10% \n\n The Stock percentage change is {num} %"
   )
 
-
 def main():
   driver = get_driver()
   time.sleep(2)
@@ -54,6 +51,5 @@ def main():
 
   if num < -0.10:
     send_mail(num)
-
 
 main()
